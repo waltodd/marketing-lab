@@ -1,10 +1,14 @@
 import Image from "next/image";
-import { Button } from "@repo/ui/button";
-import styles from "./page.module.css";
+import Link from "next/link";
+import { Button } from "@/components/ui/button"
 
 export default function Home() {
   return (
-    <div className={styles.page}>
+    <div className="flex flex-col min-h-screen justify-center items-center">
+      <Button variant="outline">
+        <Link href="/signin">Login</Link>
+      </Button>
+
       <h1>Marketing Lab</h1>
     </div>
   );
