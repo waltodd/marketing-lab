@@ -13,6 +13,9 @@
     "typescript": "^5.4.5"
   },
   "packageManager": "pnpm@8.15.6",
+  "pnpm": {
+    "packages": ["packages/*", "libs/*"]
+  },
   "engines": {
     "node": ">=18"
   }
