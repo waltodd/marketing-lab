@@ -54,7 +54,7 @@ const Page = () => {
 
   return (
     <div className="w-full flex flex-col min-h-screen justify-center items-center">
-      <Card className="px-4 py-4 min-w-[400px]">
+      <Card className="px-4 py-4 min-w-[400px] bg-[#1c1c24] border-none">
         <div className="w-full flex flex-col justify-center items-center max-w-sm items-center gap-1.5 py-2">
           <Image src={logo} height={120} width={120} alt="Marketing Lab" />
           <h1 className="text-3xl font-bold ">Login</h1>
@@ -95,7 +95,7 @@ const Page = () => {
         <div className="grid w-full items-center max-w-sm items-center gap-1.5 py-2">
           <Button
             onClick={handleSubmit}
-            className="w-full bg-[#80D77E] text-white"
+            className="w-full bg-[#80D77E] text-white border-none"
             variant="outline"
           >
             Registrar
