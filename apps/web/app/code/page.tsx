@@ -1,9 +1,7 @@
 "use client";
-import jwt from "jsonwebtoken";
-import { useState } from "react";
+import { useState,Suspense } from "react";
 import { Card } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { logo, loader } from "@/assets";
@@ -137,4 +135,14 @@ const Page = () => {
   );
 };
 
-export default Page;
+
+// Wrapping the component in Suspense to handle useSearchParams correctly
+const PageWrapper = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Page />
+    </Suspense>
+  );
+};
+
+export default PageWrapper;
