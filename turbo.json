@@ -11,17 +11,17 @@
         ".env.production",
         ".env"
       ],
-      "env": ["APP_ID", "JWT_SECRET_KEY","GITHUB_TOKEN"],
+      "env": ["APP_ID", "JWT_SECRET_KEY", "GITHUB_TOKEN"],
 
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": ["build/**"]
     },
     "web#build": {
       "dependsOn": ["^build"],
       "env": ["APP_ID", "JWT_SECRET_KEY"],
 
-      "outputs": ["dist/**"]
+      "outputs": ["build/**"]
     },
-    
+
     "lint": {
       "dependsOn": ["^lint"]
     },
@@ -37,10 +37,6 @@
       ]
     }
   },
-  "globalEnv": [
-    "GITHUB_TOKEN"
-  ],
-  "globalDependencies": [
-    "tsconfig.json" 
-  ]
+  "globalEnv": ["GITHUB_TOKEN"],
+  "globalDependencies": ["tsconfig.json"]
 }
