@@ -1,7 +1,94 @@
 
 
 > web@0.1.0 build /home/waltodd/Personal Projects/marketing-lab/apps/web
-> next build --output public
+> next build
 
-error: unknown option '--output'
-[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m
+  [1m[38;2;173;127;168m▲ Next.js 14.2.6[39m[22m
+  - Environments: .env
+
+ [37m[1m [22m[39m Creating an optimized production build ...
+ [32m[1m✓[22m[39m Compiled successfully
+[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G[?25h
+[36m./app/code/page.tsx[39m
+[33m15[39m:[33m11[39m  [33m[1mWarning[22m[39m: 'db' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+
+[36m./app/dashboard/admin/page.tsx[39m
+[33m2[39m:[33m8[39m  [33m[1mWarning[22m[39m: 'Cookies' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m3[39m:[33m17[39m  [33m[1mWarning[22m[39m: 'useState' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m3[39m:[33m27[39m  [33m[1mWarning[22m[39m: 'useEffect' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m9[39m:[33m9[39m  [33m[1mWarning[22m[39m: 'userEmail' is assigned a value but never used.  [90m[1mno-unused-vars[22m[39m
+
+[36m./app/dashboard/influencer/page.tsx[39m
+[33m3[39m:[33m17[39m  [33m[1mWarning[22m[39m: 'useState' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m3[39m:[33m27[39m  [33m[1mWarning[22m[39m: 'useEffect' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m8[39m:[33m9[39m  [33m[1mWarning[22m[39m: 'userId' is assigned a value but never used.  [90m[1mno-unused-vars[22m[39m
+
+[36m./app/dashboard/sponsor/page.tsx[39m
+[33m3[39m:[33m17[39m  [33m[1mWarning[22m[39m: 'useState' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m3[39m:[33m27[39m  [33m[1mWarning[22m[39m: 'useEffect' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m8[39m:[33m9[39m  [33m[1mWarning[22m[39m: 'userId' is assigned a value but never used.  [90m[1mno-unused-vars[22m[39m
+
+[36m./app/signup/page.tsx[39m
+[33m2[39m:[33m10[39m  [33m[1mWarning[22m[39m: 'useEffect' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m12[39m:[33m18[39m  [33m[1mWarning[22m[39m: 'db' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m22[39m:[33m10[39m  [33m[1mWarning[22m[39m: 'isChecked' is assigned a value but never used.  [90m[1mno-unused-vars[22m[39m
+[33m26[39m:[33m10[39m  [33m[1mWarning[22m[39m: 'users' is assigned a value but never used.  [90m[1mno-unused-vars[22m[39m
+[33m26[39m:[33m17[39m  [33m[1mWarning[22m[39m: 'setUsers' is assigned a value but never used.  [90m[1mno-unused-vars[22m[39m
+[33m32[39m:[33m9[39m  [33m[1mWarning[22m[39m: 'handleCheckboxChange' is assigned a value but never used.  [90m[1mno-unused-vars[22m[39m
+
+[36m./pages/api/auth/logout.ts[39m
+[33m14[39m:[33m15[39m  [33m[1mWarning[22m[39m: NODE_ENV is not listed as a dependency in turbo.json  [90m[1mturbo/no-undeclared-env-vars[22m[39m
+
+[36m./pages/api/auth/verify.ts[39m
+[33m6[39m:[33m19[39m  [33m[1mWarning[22m[39m: JWT_SECRET is not listed as a dependency in turbo.json  [90m[1mturbo/no-undeclared-env-vars[22m[39m
+
+[36m./components/Navbar.tsx[39m
+[33m6[39m:[33m10[39m  [33m[1mWarning[22m[39m: 'logo' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m12[39m:[33m9[39m  [33m[1mWarning[22m[39m: 'router' is assigned a value but never used.  [90m[1mno-unused-vars[22m[39m
+
+[36m./components/RoleCard.tsx[39m
+[33m2[39m:[33m20[39m  [33m[1mWarning[22m[39m: 'useEffect' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m8[39m:[33m20[39m  [33m[1mWarning[22m[39m: 'role' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+
+[36m./components/Sidebar.jsx[39m
+[33m4[39m:[33m10[39m  [33m[1mWarning[22m[39m: 'logo' is defined but never used.  [90m[1mno-unused-vars[22m[39m
+[33m19[39m:[33m9[39m  [33m[1mWarning[22m[39m: 'router' is assigned a value but never used.  [90m[1mno-unused-vars[22m[39m
+
+[36minfo[39m  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G[?25h [37m[1m [22m[39m Linting and checking validity of types     [32m[1m✓[22m[39m Linting and checking validity of types 
+[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
+[?25l [37m[1m [22m[39m Generating static pages (0/11)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/11)  [36m[=   ][39mundefined
+undefined
+[2K[1G [37m[1m [22m[39m Generating static pages (8/11)  [36m[==  ][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (11/11)
+[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[?25l [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting build traces     [32m[1m✓[22m[39m Collecting build traces 
+[2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization     [32m[1m✓[22m[39m Finalizing page optimization 
+
+[4mRoute (app)[24m                               [4mSize[24m     [4mFirst Load JS[24m
+┌ ○ /                                     1.53 kB         [37m[1m100 kB[22m[39m
+├ ○ /_not-found                           138 B          [37m[1m87.2 kB[22m[39m
+├ ○ /code                                 7.57 kB         [37m[1m115 kB[22m[39m
+├ ○ /dashboard/admin                      1.47 kB         [37m[1m124 kB[22m[39m
+├ ○ /dashboard/influencer                 674 B           [37m[1m116 kB[22m[39m
+├ ○ /dashboard/sponsor                    673 B           [37m[1m116 kB[22m[39m
+├ ○ /signin                               4.29 kB         [37m[1m139 kB[22m[39m
+└ ○ /signup                               7.6 kB          [37m[1m143 kB[22m[39m
++ First Load JS shared by all             [37m[1m87 kB[22m[39m
+  ├ chunks/02b1a2da-7bfe2958c8f00a03.js   53.6 kB
+  ├ chunks/117-5acd1cf59784a5ca.js        31.5 kB
+  └ other shared chunks (total)           1.89 kB
+
+[4mRoute (pages)[24m                             [4mSize[24m     [4mFirst Load JS[24m
+┌ ƒ /api/auth/logout                      0 B            [37m[1m79.2 kB[22m[39m
+├ ƒ /api/auth/verify                      0 B            [37m[1m79.2 kB[22m[39m
+└ ƒ /api/instant                          0 B            [37m[1m79.2 kB[22m[39m
++ First Load JS shared by all             [37m[1m79.2 kB[22m[39m
+  ├ chunks/framework-bef83a85c94ff7de.js  45.2 kB
+  ├ chunks/main-a0aa78989cfc5afc.js       32.2 kB
+  └ other shared chunks (total)           1.87 kB
+
+ƒ Middleware                              [37m[1m27.1 kB[22m[39m
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+
+[?25h
