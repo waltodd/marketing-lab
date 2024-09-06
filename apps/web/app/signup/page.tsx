@@ -9,7 +9,7 @@ import { logo } from "@/assets";
 import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
 import RoleCard from "@/components/RoleCard";
-import { signUp, db } from "@/api/instant";
+import { signUp, db } from "@/pages/api/instant";
 import { rolesArray } from "@/constants";
 import { useRouter } from "next/navigation";
 
