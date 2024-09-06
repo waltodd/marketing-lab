@@ -16,7 +16,7 @@ export function middleware(req: NextRequest) {
   // Get the token from cookies for protected routes
   const token = req.cookies.get('accessToken')?.value;
 
-  
+  // console.log(`In Middleware${token}`)
 
   // If no token is found, redirect to the signin page
   if (!token) {

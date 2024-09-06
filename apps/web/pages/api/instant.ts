@@ -11,7 +11,7 @@ export const signUp = async (email: string, password: string, role: string) => {
 
   try {
     await db.transact(
-      tx.users.update({
+      tx.users[userId].update({
         id: userId,
         email: email,
         password: password,
