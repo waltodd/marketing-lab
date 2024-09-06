@@ -13,13 +13,13 @@
       ],
       "env": ["APP_ID", "JWT_SECRET_KEY", "GITHUB_TOKEN"],
 
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": ["build/**"]
     },
     "web#build": {
       "dependsOn": ["^build"],
       "env": ["APP_ID", "JWT_SECRET_KEY"],
 
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": ["build/**"]
     },
 
     "lint": {
