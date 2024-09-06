@@ -14,15 +14,19 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { useSearchParams, useRouter } from "next/navigation";
-// import { verifyCode, db } from "@/api/instant";
+import {  db } from "@/pages/api/instant";
 
 const Page = () => {
+
+  
   const [code, setCode] = useState("");
   const searchParams = useSearchParams();
-  const email = searchParams.get("email");
+  const email = searchParams?.get("email");
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+
+  
   // Check if `email` is not null before using it
   if (email === null) {
     return <div>No email provided</div>;
@@ -52,7 +56,8 @@ const Page = () => {
       const data = await response.json();
       if (data.success) {
         // Handle success, such as saving token in client-side storage (not sensitive data)
-        // console.log('User authenticated:', data.user);
+         console.log('User authenticated:', data.user);
+
         
         setTimeout(() => {
           setIsLoading(false);

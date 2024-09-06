@@ -6,8 +6,22 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 const Page = () => {
   const { isLoading, user, error } = db.useAuth();
-  const userId = user?.id;
+  const userEmail = user?.email;
   const router = useRouter();
+  const query = {
+    users: {
+      $: {
+        where: {
+          email: userEmail,
+        },
+      },
+    },
+  }
+  const {  data } = db.useQuery(query)
+  const role = data?.users
+
+
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -15,9 +29,27 @@ const Page = () => {
     return <div>Uh oh! {error.message}</div>;
   }
 
-  const handleLogOut = () =>{
-    Cookies.remove("accessToken");
-    router.push("/");
+ 
+  const handleLogOut = async() =>{
+
+    try {
+      const response = await fetch("/api/auth/logout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        // Handle success, such as saving token in client-side storage (not sensitive data)
+         console.log('User authenticated:', data.user);
+
+        router.push("/");
+      } else {
+        console.error("Authentication failed:", data.message);
+      }
+    } catch (error) {
+      console.error("Error during verification:", error);
+    }
   }
   return (
     <div>
