@@ -31,7 +31,8 @@
     "react-dom": "18.3.1",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.5.2",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "vercel": "^37.4.0"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
