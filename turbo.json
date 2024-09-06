@@ -11,12 +11,9 @@
         ".env.production",
         ".env"
       ],
-      "env": [
-        "APP_ID",
-        "JWT_SECRET_KEY"
-      ],
-  
-      "outputs": [".next/**", "!.next/cache/**"]
+      "env": ["APP_ID", "JWT_SECRET_KEY"],
+
+      "outputs": ["public/**", ".next/**", "!.next/cache/**"]
     },
     "lint": {
       "dependsOn": ["^lint"]
