@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { db } from "@/api/instant";
+import { db } from "@/pages/api/instant";
 
 const Page = () => {
   const { isLoading, user, error } = db.useAuth();

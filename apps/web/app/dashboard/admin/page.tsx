@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { db } from "@/api/instant";
+import { db } from "@/pages/api/instant";
 
 const Page = () => {
   const { isLoading, user, error } = db.useAuth();
   const userId = user?.id;
-  console.log(user);
+
   if (isLoading) {
     return <div>Loading...</div>;
   }

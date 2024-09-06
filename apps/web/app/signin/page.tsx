@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import {logo} from "@/assets";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { signIn } from "@/api/instant";
+import { signIn } from "@/pages/api/instant";
 
 
 
