@@ -19,7 +19,7 @@
       "dependsOn": ["^build"],
       "env": ["APP_ID", "JWT_SECRET_KEY"],
 
-      "outputs": ["build/**"]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
 
     "lint": {
