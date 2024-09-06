@@ -29,7 +29,7 @@ const Navbar = () => {
           btnType="button"
           title='Create a campaign'
           styles='bg-[#1dc071]'
-
+          handleClick={()=>{}}
         />
 
         <Link href="/profile">
@@ -81,7 +81,7 @@ const Navbar = () => {
               btnType="button"
               title='Create a campaign'
               styles='bg-[#1dc071]' 
-       
+              handleClick={()=>{}}
             />
             </div>
           </div>

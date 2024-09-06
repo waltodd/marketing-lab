@@ -8,17 +8,6 @@ const Page = () => {
   const { isLoading, user, error } = db.useAuth();
   const userEmail = user?.email;
   const router = useRouter();
-  const query = {
-    users: {
-      $: {
-        where: {
-          email: userEmail,
-        },
-      },
-    },
-  }
-  const {  data } = db.useQuery(query)
-  const role = data?.users
 
 
 
