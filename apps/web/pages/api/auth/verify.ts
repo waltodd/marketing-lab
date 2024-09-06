@@ -21,7 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.setHeader(
       'Set-Cookie',
-      `authToken=${token}; HttpOnly; Path=/; Max-Age=3600`
+      `accessToken=${token}; HttpOnly; Path=/; Max-Age=3600`
     );
 
     res.status(200).json({ success: true, user: { id, email: userEmail } });
