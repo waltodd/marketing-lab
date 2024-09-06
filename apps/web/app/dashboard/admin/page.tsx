@@ -43,7 +43,7 @@ const Page = () => {
   return (
     <div>
       DASHBOARD
-      {user ? <p className="text-white">Welcome, {user.email}!</p> : <p>Loading...</p>}
+      {user ? <p className="text-white">Welcome, {userEmail}!</p> : <p>Loading...</p>}
        <Button onClick={handleLogOut} className=" border-none  bg-[#80D77E] text-white"
             variant="outline">Logout</Button>
     </div>
