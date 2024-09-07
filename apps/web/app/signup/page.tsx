@@ -9,7 +9,6 @@ import { logo } from "@/assets";
 import Image from "next/image";
 import { Checkbox } from "@/components/ui/checkbox";
 import RoleCard from "@/components/RoleCard";
-import { signUp, db } from "@/pages/api/instant";
 import { rolesArray } from "@/constants";
 import { useRouter } from "next/navigation";
 
@@ -40,12 +39,23 @@ const Page = () => {
     }
 
     try {
-      const response = await signUp(email, password, selectedRole);
 
-      console.log(response);
-
-      alert("Registration successful!");
-      router.push("/signin");
+      const response = await fetch("/api/auth/signup", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password,selectedRole }),
+      });
+      const data = await response.json();
+      if(data.success === true){
+        alert(`${data.message}`);
+        router.push("/signin");
+      }else{
+        alert(`${data.message}`);
+      }
+     
+      return data;
     } catch (error) {
       console.error("Registration error:", error);
       alert("Registration failed. Please try again.");
