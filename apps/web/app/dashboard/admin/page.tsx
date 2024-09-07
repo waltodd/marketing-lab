@@ -5,16 +5,16 @@ import { db } from "@/pages/api/instant";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 const Page = () => {
-  const { isLoading, user, error } = db.useAuth();
-  const userEmail = user?.email;
+  // const { isLoading, user, error } = db.useAuth();
+  // const userEmail = user?.email;
   const router = useRouter();
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (error) {
-    return <div>Uh oh! {error.message}</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+  // if (error) {
+  //   return <div>Uh oh! {error.message}</div>;
+  // }
 
  
   const handleLogOut = async() =>{
@@ -41,7 +41,7 @@ const Page = () => {
   return (
     <div>
       DASHBOARD
-      {user ? <p className="text-white">Welcome, {userEmail}!</p> : <p>Loading...</p>}
+     <p className="text-white">Welcome, ADMIN </p>
        <Button onClick={handleLogOut} className=" border-none  bg-[#80D77E] text-white"
             variant="outline">Logout</Button>
     </div>

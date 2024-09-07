@@ -8,12 +8,13 @@ import { Button } from "@/components/ui/button";
 import {logo} from "@/assets";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-// import { db } from "@/pages/api/instant";
+import { db } from "@/pages/api/instant";
 
 async function customSignIn(
   email: string,
   password: string
 ): Promise<{ token: string }> {
+
   const response = await fetch("/api/auth/signin", {
     method: 'POST',
     headers: {
@@ -22,7 +23,16 @@ async function customSignIn(
     body: JSON.stringify({ email, password }),
   });
   const data = await response.json();
-  return data;
+  if(data.success === true){
+    // alert(`${data.message}`);
+
+    console.log(`FRONT ${data}`)
+     return data.token
+  }else{
+    alert(`${data.message}`);
+  }
+
+  return data.token
 }
 
 const Page = () => {
@@ -38,6 +48,29 @@ const Page = () => {
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
+
+  const callAuthenticatedEndpoint = async(user:any) =>{
+    try{
+    const response = await fetch('/api/auth/custom_endpoint', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.refresh_token}`, // Pass the refresh token in the header
+      },
+      body: JSON.stringify({ someData: 'example data' }),
+    });
+
+    const data = await response.json();
+    console.log('API response:', data);
+    router.push("/dashboard/admin/");
+
+    if (!response.ok) {
+      throw new Error(data.message || 'Error calling the API');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+  }
   const handleLogin = async () =>{
     if (!email) {
       alert("Please select a role.");
@@ -47,9 +80,9 @@ const Page = () => {
     try {
       // initiate your custom sign in flow
       const data = await customSignIn(email, password); 
+      const user = db.auth.getUser({email:email})
+      await callAuthenticatedEndpoint(user);
       // sign in with the token on success
-
-      // router.push(`/code?email=${email}`);
     } catch (error) {
       console.error("Registration error:", error);
       alert("Registration failed. Please try again.");

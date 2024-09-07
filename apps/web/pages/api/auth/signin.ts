@@ -9,6 +9,11 @@ const signToken = (user: { id: string; email: string }) => {
   return jwt.sign(user, secretKey, { expiresIn: '1h' });
 };
 
+const handleError = (res: NextApiResponse, status: number, message: string) => {
+  res.status(status).json({ success: false, message });
+};
+
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   if (req.method !== 'POST') {
@@ -20,22 +25,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     // Find the user in the database by email
 
-    const user = await db.query({
-users:{$:{where:{email:email}}}
-    })
-    console.log(user)
-     // Compare the provided password with the hashed password stored in the database
+    const usersData = await db.query({ users: {} });
+    const users = usersData.users;
 
-    //  if (!isPasswordValid) {
-    //    return res.status(401).json({ message: 'Invalid email or password' });
-    //  }
+    const existingUser = users.find((user) => user.email === email);
+    if (!existingUser) {
+      return handleError(res, 400, "Conta não existe");
+    }
 
-    // res.setHeader(
-    //   'Set-Cookie',
-    //   `accessToken=${token}; HttpOnly; Path=/; Max-Age=3600`
-    // );
+    const isPasswordValid = await bcrypt.compare(password, existingUser.password);
+    if (!isPasswordValid) {
+      return handleError(res, 400, 'E-mail ou senha inválidos');
+    }
 
-    // res.status(200).json({ success: true, user: { id, email: userEmail } });
+    const token = await db.auth.createToken(email);
+
+    res.setHeader(
+      'Set-Cookie',
+      `accessToken=${token}; HttpOnly; Path=/; Max-Age=3600`
+    );
+
+    res.status(200).json({ token });
   } catch (error) {
     console.error('Error verifying code:', error);
     res.status(500).json({ success: false, message: 'Error verifying code' });
