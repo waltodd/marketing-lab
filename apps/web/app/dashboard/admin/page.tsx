@@ -9,8 +9,6 @@ const Page = () => {
   const userEmail = user?.email;
   const router = useRouter();
 
-
-
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -30,7 +28,7 @@ const Page = () => {
       const data = await response.json();
       if (data.success) {
         // Handle success, such as saving token in client-side storage (not sensitive data)
-         console.log('User authenticated:', data.user);
+        //  console.log('User authenticated:', data.user);
 
         router.push("/");
       } else {

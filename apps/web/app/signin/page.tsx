@@ -8,13 +8,36 @@ import { Button } from "@/components/ui/button";
 import {logo} from "@/assets";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { signIn } from "@/pages/api/instant";
+// import { db } from "@/pages/api/instant";
 
-
+async function customSignIn(
+  email: string,
+  password: string
+): Promise<{ token: string }> {
+  const response = await fetch("/api/auth/signin", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
+  const data = await response.json();
+  return data;
+}
 
 const Page = () => {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const router = useRouter();
+
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
   const handleLogin = async () =>{
     if (!email) {
       alert("Please select a role.");
@@ -22,12 +45,11 @@ const Page = () => {
     }
 
     try {
-      const response = await signIn(email);
+      // initiate your custom sign in flow
+      const data = await customSignIn(email, password); 
+      // sign in with the token on success
 
-      console.log(response);
-
-      alert("Foi enviado um codigo no teu email");
-      router.push(`/code?email=${email}`);
+      // router.push(`/code?email=${email}`);
     } catch (error) {
       console.error("Registration error:", error);
       alert("Registration failed. Please try again.");
@@ -43,7 +65,12 @@ const Page = () => {
         <div className="grid w-full max-w-sm items-center gap-1.5 py-2">
           <Label htmlFor="email">Email</Label>
           <Input type="email" id="email" value={email}
-            onChange={(e) => setEmail(e.target.value)}
+        onChange={handleEmailChange} />
+        </div>
+        <div className="grid w-full max-w-sm items-center gap-1.5 py-2">
+          <Label htmlFor="password">Password</Label>
+          <Input type="password" id="password" value={password}
+            onChange={handlePasswordChange}
             required placeholder="Email" />
         </div>
         <div className="grid w-full items-center max-w-sm items-center gap-1.5 py-2">
