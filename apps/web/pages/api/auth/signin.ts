@@ -1,4 +1,4 @@
-// pages/api/auth/verify.ts
+
 import type { NextApiRequest, NextApiResponse } from 'next';
 import jwt from 'jsonwebtoken';
 import { db } from '@/pages/api/instant'; // Ensure this is your server-side db access
@@ -39,6 +39,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const token = await db.auth.createToken(email);
+    const rr = await signToken({id:existingUser.id, email:existingUser.email});
+
+    console.log(rr)
 
     res.setHeader(
       'Set-Cookie',
@@ -47,7 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json({ token });
   } catch (error) {
-    console.error('Error verifying code:', error);
-    res.status(500).json({ success: false, message: 'Error verifying code' });
+    console.error('Erro no login:', error);
+    res.status(500).json({ success: false, message: 'Erro no login' });
   }
 }
