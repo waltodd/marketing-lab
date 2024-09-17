@@ -2,7 +2,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 // Adjust this import according to your project structure
 
-const secretKey = process.env.JWT_SECRET || "your-secret-key";
 
 export default async function getCurrentUser(
   req: NextApiRequest,
