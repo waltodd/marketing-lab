@@ -1,12 +1,6 @@
 // pages/api/auth/verify.ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import jwt from "jsonwebtoken";
-import { db, tx, id } from "@/pages/api/instant"; // Ensure this is your server-side db access
-import bcrypt from "bcrypt";
-const secretKey = process.env.JWT_SECRET || "your-secret-key";
-const signToken = (user: { id: string; email: string }) => {
-  return jwt.sign(user, secretKey, { expiresIn: "1h" });
-};
+import { neon } from "@neondatabase/serverless";
 const handleError = (res: NextApiResponse, status: number, message: string) => {
   res.status(status).json({ success: false, message });
 };
@@ -18,53 +12,69 @@ export default async function handler(
   if (req.method !== "POST") {
     return handleError(res, 405, "Method not allowed");
   }
-  const { email, password, selectedRole } = req.body;
+
+  const payload = req.body;
+  const { name, email, clerkId, roleName } = payload;
 
   try {
-    // Check if email exits
-    const usersData = await db.query({ users: {} });
-    const users = usersData.users;
-
-    const existingUser = users.find((user) => user.email === email);
-    if (existingUser) {
-      return handleError(res, 400, "O e-mail já está registrado");
+    const sql = neon(`${process.env.DATABASE_URL}`);
+    // Example check: ensure name, email, and clerkId are not empty
+    if (!email || !name || !clerkId || !roleName) {
+      return handleError(res, 400, "Missing required fields");
     }
 
-    // Fetch all available roles from the database
-    const rolesData = await db.query({ roles: {} });
-    const roles = rolesData.roles;
+    const existingUser = await sql`
+      SELECT id FROM users
+      WHERE email = ${email}
+      LIMIT 1;
+    `;
 
-    //Find role ID based on the selectedRole
-    const role = roles.find((role) => role.role === selectedRole);
-
-    if (!role) {
-      return handleError(res, 400, "Função inválida selecionada");
+    // 2. If the user exists, throw an error
+    if (existingUser.length > 0) {
+      throw new Error("Email is already in use. Please use a different email.");
     }
 
-    // Hash the password before saving it to the database
-    // 10 rounds of hashing
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // 3. If the email is not in use, insert the new user
+    const newUser = await sql`
+  INSERT INTO users (
+    name, 
+    email, 
+    clerk_id
+  ) 
+  VALUES (
+    ${name}, 
+    ${email},
+    ${clerkId}
+  )
+  RETURNING id;
+`;
 
-    // Create the user
+    const userId = newUser[0].id; // Get the new user's ID
 
-    const userId = id();
-    const newUser = await db.transact([
-      tx.users[userId].update({
-        email: email,
-        password: hashedPassword,
-        createdAt: new Date(),
-      }),
-    ]);
+    // 4. Get the role ID from the 'roles' table where roleName matches
+    const role = await sql`
+  SELECT id FROM roles
+  WHERE role_name = ${roleName}
+  LIMIT 1;
+`;
 
-    // Assign the role to the user
+    // 5. Insert the user ID and role ID into the 'user_roles' table if the role exists
+    if (role.length > 0) {
+      const roleId = role[0].id;
 
-    await db.transact([
-      tx.user_roles[id()].update({
-        userId: userId,
-        roleId: role.id,
-      }),
-    ]);
-
+      await sql`
+    INSERT INTO user_roles (
+      user_id, 
+      role_id
+    ) 
+    VALUES (
+      ${userId}, 
+      ${roleId}
+    );
+  `;
+    } else {
+      throw new Error("Role not found.");
+    }
     return res
       .status(201)
       .json({ success: true, message: "User created successfully" });
