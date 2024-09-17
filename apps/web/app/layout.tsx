@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
+<<<<<<< HEAD
 import { ClerkLoaded, ClerkProvider } from "@clerk/nextjs";
+=======
+>>>>>>> origin/main
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -24,12 +27,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+<<<<<<< HEAD
       <body
         className={`${geistSans.variable} ${geistMono.variable} bg-[#13131a] text-white`}
       >
         <ClerkProvider>
           <ClerkLoaded>{children}</ClerkLoaded>
         </ClerkProvider>
+=======
+      <body className={`${geistSans.variable} ${geistMono.variable} bg-[#13131a] text-white`}>
+        {children}
+>>>>>>> origin/main
       </body>
     </html>
   );

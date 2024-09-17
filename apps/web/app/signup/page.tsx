@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 "use client";
+=======
+"use client"; // This directive makes it a client component
+>>>>>>> origin/main
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -11,6 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import RoleCard from "@/components/RoleCard";
 import { rolesArray } from "@/constants";
 import { useRouter } from "next/navigation";
+<<<<<<< HEAD
 import { useSignUp } from "@clerk/nextjs";
 import { fetchAPI } from '@/lib/fetch';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
@@ -69,11 +74,62 @@ const Page = () => {
       }
     } catch (err: any) {
       setVerification({ ...verification, error: err.errors[0].longMessage, state: "failed" });
+=======
+
+const Page = () => {
+  const [selectedRole, setSelectedRole] = useState<string | null>(
+    rolesArray[0]?.role || null
+  );
+  
+
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [users, setUsers] = useState([]);
+
+  const handleRoleSelect = (role: string | null) => {
+    setSelectedRole(role);
+  };
+
+  const handleCheckboxChange = (checked: boolean) => {
+    setIsChecked(checked);
+  };
+
+  const handleSubmit = async () => {
+    if (!selectedRole) {
+      alert("Please select a role.");
+      return;
+    }
+
+    try {
+
+      const response = await fetch("/api/auth/signup", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password,selectedRole }),
+      });
+      const data = await response.json();
+      if(data.success === true){
+        alert(`${data.message}`);
+        router.push("/signin");
+      }else{
+        alert(`${data.message}`);
+      }
+     
+      return data;
+    } catch (error) {
+      console.error("Registration error:", error);
+      alert("Registration failed. Please try again.");
+>>>>>>> origin/main
     }
   };
 
   return (
     <div className="w-full flex flex-col min-h-screen justify-center items-center">
+<<<<<<< HEAD
       {!showSuccessModal && (
         <Card className="px-4 py-4 min-w-[400px] bg-[#1c1c24] border-none">
           <div className="w-full flex flex-col justify-center items-center max-w-sm gap-1.5 py-2">
@@ -198,6 +254,66 @@ const Page = () => {
           </div>
         </Card>
       )}
+=======
+      <Card className="px-4 py-4 min-w-[400px] bg-[#1c1c24] border-none">
+        <div className="w-full flex flex-col justify-center items-center max-w-sm items-center gap-1.5 py-2">
+          <Image src={logo} height={120} width={120} alt="Marketing Lab" />
+          <h1 className="text-3xl font-bold ">Login</h1>
+        </div>
+        <div className="grid w-full max-w-sm items-center gap-1.5 py-2">
+          <Label htmlFor="email">Email</Label>
+          <Input
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            type="email"
+            id="email"
+            placeholder="Email"
+          />
+        </div>
+        <div className="grid w-full max-w-sm items-center gap-1.5 py-2">
+          <Label htmlFor="password">Password</Label>
+          <Input
+            type="password"
+            id="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className="grid w-full max-w-sm items-center gap-1.5 py-2">
+          <Label htmlFor="password">Selecione um papel</Label>
+          <RoleCard onRoleSelect={handleRoleSelect} />
+        </div>
+        <div className="flex items-center space-x-2 py-2">
+          <Checkbox
+            id="terms"
+            className="text-[#1dc071] w-4 h-4 bg-[#fafafa]"
+          />
+          <Label htmlFor="terms">Aceitar termos e condições</Label>
+        </div>
+
+        <div className="grid w-full items-center max-w-sm items-center gap-1.5 py-2">
+          <Button
+            onClick={handleSubmit}
+            className="w-full bg-[#80D77E] text-white border-none"
+            variant="outline"
+          >
+            Registrar
+          </Button>
+        </div>
+
+        <div className="grid w-full max-w-sm items-center gap-1.5 py-2">
+          <p className="">
+            Já tem uma conta?{" "}
+            <Link href="/signin" className="text-[#1dc071]">
+              Faça login
+            </Link>{" "}
+            aqui.
+          </p>
+        </div>
+      </Card>
+>>>>>>> origin/main
     </div>
   );
 };

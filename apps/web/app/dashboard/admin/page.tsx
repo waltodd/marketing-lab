@@ -1,10 +1,19 @@
 "use client";
 import Cookies from "js-cookie";
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 const Page = () => {
+=======
+import { db } from "@/pages/api/instant";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+const Page = () => {
+  // const { isLoading, user, error } = db.useAuth();
+  // const userEmail = user?.email;
+>>>>>>> origin/main
   const router = useRouter();
 
   // if (isLoading) {
@@ -39,7 +48,11 @@ const Page = () => {
   return (
     <div>
       DASHBOARD
+<<<<<<< HEAD
      <p className="text-white">Welcome,  </p>
+=======
+     <p className="text-white">Welcome, ADMIN </p>
+>>>>>>> origin/main
        <Button onClick={handleLogOut} className=" border-none  bg-[#80D77E] text-white"
             variant="outline">Logout</Button>
     </div>
