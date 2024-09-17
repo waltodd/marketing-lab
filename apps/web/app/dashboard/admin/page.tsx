@@ -1,7 +1,7 @@
 "use client";
 import Cookies from "js-cookie";
 import React, { useState, useEffect } from "react";
-import { useGlobalContext } from "@/context/GlobalProvider";
+
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 const Page = () => {

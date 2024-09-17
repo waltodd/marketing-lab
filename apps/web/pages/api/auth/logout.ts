@@ -1,6 +1,6 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { db } from '../instant';
+
 
 
 const handleError = (res: NextApiResponse, status: number, message: string) => {
